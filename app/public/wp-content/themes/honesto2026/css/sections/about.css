@@ -1,0 +1,142 @@
+body[page-name="about"] header {
+  position: relative !important;
+}
+.site-content {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.decoracion-desktop {
+  position: absolute;
+  bottom: 0;
+  right: -30px;
+  width: auto;
+  z-index: 2;
+  pointer-events: none;
+  user-select: none;
+  height: 100%;
+}
+.decoracion-desktop svg {
+  height: 100%;
+  width: auto;
+}
+.decoracion-desktop img {
+  height: 100%;
+  width: auto;
+}
+.decoracion-mobile {
+  display: none;
+}
+#section-welcome {
+  flex: 1;
+}
+#section-welcome .d-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 24px;
+  grid-row-gap: 24px;
+}
+#section-welcome .titulo { 
+  grid-area: 1 / 1 / 3 / 7; 
+  font-size: clamp(8vw, 9vw, 10vw);
+  line-height: 1.1;
+}
+#section-welcome .descripcion {
+  font-size: 17px;
+  line-height: 1.2;
+  grid-area: 2 / 4 / 3 / 7; 
+  align-content: center;
+}
+#section-welcome .descripcion p {
+  max-width: 70vw;
+}
+#section-welcome .titulo_services {
+  font-size: 32px;
+  font-weight: 800;
+}
+#section-welcome .titulo_taxonomia {
+  font-size: 15px;
+  text-decoration: underline;
+}
+#section-welcome .taxonomias {
+  font-size: 15px;
+  line-height: 1.25;
+}
+#section-welcome .tax {
+  overflow-y: hidden;
+  padding-bottom: 100px;
+  height: 100%;
+  flex: 1;
+}
+
+@media screen and (max-width: 767px) {
+  #section-welcome {
+    overflow: hidden;
+  }
+  #section-welcome .d-grid {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 46px;
+    -webkit-gap: 46px;
+  }
+  #section-welcome .titulo {
+    font-size: 72px !important;
+    z-index: 1;
+  }
+  #section-welcome .text-description {
+    z-index: 0;
+    position: relative;
+  }
+  #section-welcome .taxonomias-area {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  #section-welcome .decoracion-desktop {
+    display: none;
+  }
+  #section-welcome .decoracion-mobile {
+    margin-top: -4ch;
+    margin-right: -16px;
+    width: 40vw;
+    display: block;
+    float: right;
+    shape-margin: 0ch;
+    clip-path: polygon(12% 7%, 25% 0%, 40% 0%, 66% 29%, 68% 45%, 86% 64%, 112% 100%, 45% 100%, 38% 90%, 28% 94%, 0% 62%, 0% 34%);
+    shape-outside: polygon(12% 7%, 25% 0%, 40% 0%, 66% 29%, 68% 45%, 86% 64%, 112% 100%, 45% 100%, 38% 90%, 28% 94%, 0% 62%, 0% 34%);
+    -webkit-clip-path: polygon(12% 7%, 25% 0%, 40% 0%, 66% 29%, 68% 45%, 86% 64%, 112% 100%, 45% 100%, 38% 90%, 28% 94%, 0% 62%, 0% 34%);
+    -webkit-shape-outside: polygon(12% 7%, 25% 0%, 40% 0%, 66% 29%, 68% 45%, 86% 64%, 112% 100%, 45% 100%, 38% 90%, 28% 94%, 0% 62%, 0% 34%);
+    shape-outside: polygon(12% 7%, 25% 0%, 40% 0%, 66% 29%, 68% 45%, 86% 64%, 112% 100%, 45% 100%, 38% 90%, 28% 94%, 0% 62%, 0% 34%);
+  }
+}
+
+/* Add vendor prefixes for user-select */
+.decoracion-desktop {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+/* Add vendor prefixes for flexbox */
+.site-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+/* Add vendor prefixes for overflow-y */
+#section-welcome .tax {
+  overflow-y: hidden;
+  /* No vendor prefix needed for overflow-y */
+}

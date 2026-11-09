@@ -1,0 +1,25 @@
+.loader {
+  display: none !important; }
+
+.loader * {
+  display: none !important; }
+
+header, footer {
+  display: none !important; }
+
+.center-xy {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center; }
+  .center-xy img {
+    height: 80px !important; }
+  .center-xy p {
+    margin-top: 40px; }
+  .center-xy .button {
+    padding: 20px;
+    margin-top: 40px;
+    display: inline-block; }
+
+/*# sourceMappingURL=404.css.map */

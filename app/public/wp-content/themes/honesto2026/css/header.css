@@ -1,0 +1,495 @@
+/*!
+ * Font Awesome Free 5.14.0 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ */
+.fa,
+.fas,
+.far,
+.fal,
+.fad,
+.fab,
+.mobile-menu .menu-list ul li:nth-last-child(1) a:before,
+.mobile-menu .menu-list ul li:nth-last-child(2) a:before {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+}
+
+.mobile-menu .menu-list ul li:nth-last-child(1) a:before,
+.mobile-menu .menu-list ul li:nth-last-child(2) a:before {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+}
+
+.fa-lg {
+  font-size: 1.3333333333em;
+  line-height: 0.75em;
+  vertical-align: -.0667em;
+}
+
+.fa-xs {
+  font-size: .75em;
+}
+
+.fa-sm {
+  font-size: .875em;
+}
+
+.fa-1x {
+  font-size: 1em;
+}
+
+.fa-2x {
+  font-size: 2em;
+}
+
+.fa-3x {
+  font-size: 3em;
+}
+
+.fa-4x {
+  font-size: 4em;
+}
+
+.fa-5x {
+  font-size: 5em;
+}
+
+.fa-6x {
+  font-size: 6em;
+}
+
+.fa-7x {
+  font-size: 7em;
+}
+
+.fa-8x {
+  font-size: 8em;
+}
+
+.fa-9x {
+  font-size: 9em;
+}
+
+.fa-10x {
+  font-size: 10em;
+}
+
+.fa-fw {
+  text-align: center;
+  width: 1.25em;
+}
+
+.fa-ul {
+  list-style-type: none;
+  margin-left: 2.5em;
+  padding-left: 0;
+}
+.fa-ul > li {
+  position: relative;
+}
+
+.fa-li {
+  left: -2em;
+  position: absolute;
+  text-align: center;
+  width: 2em;
+  line-height: inherit;
+}
+
+.fa-border {
+  border: solid 0.08em #eee;
+  border-radius: .1em;
+  padding: .2em .25em .15em;
+}
+
+.fa-pull-left {
+  float: left;
+}
+
+.fa-pull-right {
+  float: right;
+}
+
+.fa.fa-pull-left,
+.fas.fa-pull-left,
+.far.fa-pull-left,
+.fal.fa-pull-left,
+.fab.fa-pull-left,
+.mobile-menu .menu-list ul li:nth-last-child(1) a.fa-pull-left:before,
+.mobile-menu .menu-list ul li:nth-last-child(2) a.fa-pull-left:before {
+  margin-right: .3em;
+}
+.fa.fa-pull-right,
+.fas.fa-pull-right,
+.far.fa-pull-right,
+.fal.fa-pull-right,
+.fab.fa-pull-right,
+.mobile-menu .menu-list ul li:nth-last-child(1) a.fa-pull-right:before,
+.mobile-menu .menu-list ul li:nth-last-child(2) a.fa-pull-right:before {
+  margin-left: .3em;
+}
+
+.fa-spin {
+  animation: fa-spin 2s infinite linear;
+}
+
+.fa-pulse {
+  animation: fa-spin 1s infinite steps(8);
+}
+
+@keyframes fa-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.fa-rotate-90 {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
+  transform: rotate(90deg);
+}
+
+.fa-rotate-180 {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
+  transform: rotate(180deg);
+}
+
+.fa-rotate-270 {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
+  transform: rotate(270deg);
+}
+
+.fa-flip-horizontal {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)";
+  transform: scale(-1, 1);
+}
+
+.fa-flip-vertical {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
+  transform: scale(1, -1);
+}
+
+.fa-flip-both,
+.fa-flip-horizontal.fa-flip-vertical {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
+  transform: scale(-1, -1);
+}
+
+:root .fa-rotate-90,
+:root .fa-rotate-180,
+:root .fa-rotate-270,
+:root .fa-flip-horizontal,
+:root .fa-flip-vertical,
+:root .fa-flip-both {
+  filter: none;
+}
+
+.fa-stack {
+  display: inline-block;
+  height: 2em;
+  line-height: 2em;
+  position: relative;
+  vertical-align: middle;
+  width: 2.5em;
+}
+
+.fa-stack-1x,
+.fa-stack-2x {
+  left: 0;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+
+.fa-stack-1x {
+  line-height: inherit;
+}
+
+.fa-stack-2x {
+  font-size: 2em;
+}
+
+.fa-inverse {
+  color: #fff;
+}
+
+/* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
+readers do not read off random characters that represent icons */
+.fa-500px:before {
+  content: "\f26e";
+}
+
+/* ... (icon content rules omitted for brevity) ... */
+
+.sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+/*!
+ * Font Awesome Free 5.14.0 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ */
+@font-face {
+  font-family: 'Font Awesome 5 Brands';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("../webfonts/fa-brands-400.eot");
+  src: url("../webfonts/fa-brands-400.eot?#iefix") format("embedded-opentype"),
+       url("../webfonts/fa-brands-400.woff2") format("woff2"),
+       url("../webfonts/fa-brands-400.woff") format("woff"),
+       url("../webfonts/fa-brands-400.ttf") format("truetype"),
+       url("../webfonts/fa-brands-400.svg#fontawesome") format("svg");
+}
+.fab,
+.mobile-menu .menu-list ul li:nth-last-child(1) a:before,
+.mobile-menu .menu-list ul li:nth-last-child(2) a:before {
+  font-family: 'Font Awesome 5 Brands';
+  font-weight: 400;
+}
+
+
+
+
+
+header {
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding-top: 48px;
+  padding-bottom: 30px;
+  z-index: 5;
+  /* position: fixed; */
+}
+header .logo {
+  height: 109px;
+}
+body[post-type="work"] header .logo {
+  height: 27px;
+}
+
+header .slogan {
+  height: 30px;
+  margin-top: 5px;
+}
+header #menu-header_menu,
+header #menu-header_menu_out {
+  list-style: none;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+}
+header .mobile-menu-icon {
+  float: right;
+  margin-top: 15px;
+  width: 20px;
+}
+header .mobile-menu-icon a .line {
+  width: 20px;
+  height: 3px;
+  background: #000000;
+  display: block;
+}
+header .mobile-menu-icon a .line + .line {
+  margin-top: 2px;
+}
+header .menu-list ul {
+  display: flex;
+  padding: 0px;
+  margin-bottom: 0;
+}
+header .menu-list ul li {
+  display: inline-block;
+  list-style: none;
+  font-size: 22px;
+  flex-grow: 1;
+  text-align: center;
+}
+header .menu-list ul li + li {
+  margin-left: 4px;
+}
+header .menu-list ul li a {
+  -webkit-transition: all 600ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition: all 600ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  /* text-transform: uppercase; */
+  display: inline-block;
+  vertical-align: sub;
+}
+header .menu-list ul li a:hover {
+  text-decoration: underline;
+}
+
+header .menu-list ul li a {
+  background: white;
+  border-radius: 80px;
+  padding-inline: 20px;
+
+}
+
+.mobile-menu {
+  z-index: 6;
+  opacity: .98;
+}
+.mobile-menu .logo {
+  filter: invert(1);
+  height: 40px;
+  margin: 30px 15px;
+}
+.mobile-menu .mobile-menu-close {
+  height: 40px;
+  position: absolute;
+  top: 40px;
+  right: 19px;
+}
+.mobile-menu .menu-list {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 100%;
+  text-align: center;
+}
+.mobile-menu .menu-list ul {
+  padding: 0px;
+}
+.mobile-menu .menu-list ul li {
+  display: block;
+  list-style: none;
+  font-size: 10px;
+  cursor: pointer;
+}
+a[aria-current] {
+  color: #ff00d6 !important;
+}
+.mobile-menu .menu-list ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 10px;
+  line-height: 60px;
+  letter-spacing: 0.89px;
+  display: inline-block;
+  vertical-align: sub;
+  font-family: 'Montserrat', sans-serif;
+}
+.mobile-menu .menu-list ul li:nth-last-child(1) a {
+  width: 40px;
+  height: 60px;
+  color: transparent;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+}
+.mobile-menu .menu-list ul li:nth-last-child(1) a:before {
+  content: "\f16d";
+  color: #fff !important;
+  text-align: center;
+  font-size: 12px;
+  vertical-align: middle;
+  line-height: 60px;
+}
+.mobile-menu .menu-list ul li:nth-last-child(2) a {
+  width: 40px;
+  height: 60px;
+  color: transparent;
+  overflow: hidden;
+  vertical-align: middle;
+}
+.mobile-menu .menu-list ul li:nth-last-child(2) a:before {
+  content: "\f0e1";
+  color: #fff !important;
+  text-align: center;
+  font-size: 12px;
+  vertical-align: middle;
+  line-height: 60px;
+}
+
+.logo.mobile {
+  display: none;
+}
+@media screen and (max-width: 767px) {
+  .logo.desktop {
+    display: none;
+  }
+  .logo.mobile {
+    display: block;
+  }
+  header {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+  header .logo {
+    height: 8vw;
+  }
+  header .vertical_divider {
+    height: 30px;
+  }
+  header .menu-list.text-body-big {
+    font-size: 18px;
+  }
+  header #menu-header-menu,
+  header #menu-header_menu_out {
+    text-align: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 1ch;
+  }
+  header .menu-list ul li {
+    display: flex;
+  }
+  header .menu-list ul li + li {
+    margin: 0;
+  }
+  header .menu-list ul li a {
+    font-size: 16px;
+    padding-inline: 10px;
+  }
+
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+  .mobile-menu a {
+    color: white;
+  }
+  .mobile-menu li {
+    display: block;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  header .logo {
+    height: 8vw;
+  }
+}

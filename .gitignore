@@ -1,0 +1,22 @@
+# Local by Flywheel
+logs/
+conf/
+
+# Secrets / environment
+app/public/wp-config.php
+.env
+
+# Database dumps
+app/sql/
+*.sql
+
+# Backups & caches
+app/public/wp-content/ai1wm-backups/
+app/public/wp-content/upgrade/
+app/public/wp-content/upgrade-temp-backup/
+app/public/wp-content/cache/
+app/public/local-xdebuginfo.php
+
+# OS / editor
+.DS_Store
+.claude/

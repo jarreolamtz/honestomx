@@ -1,0 +1,65 @@
+footer {
+  padding-top: 40px !important;
+  padding-bottom: 40px !important;
+  z-index: 1;
+  position: relative;
+  font-size: 13px !important;
+}
+
+footer a {
+  display: inline-block;
+}
+
+footer a:hover {
+  color: black;
+}
+
+footer a+a {
+  margin-left: 20px;
+}
+
+.decoracion_flor {
+  position: fixed;
+  bottom: 0;
+  right: 40px;
+  width: auto;
+  z-index: 2;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  z-index: -1;
+}
+.decoracion_flor {
+  display: none;
+}
+body[page-name="work"] {
+  .decoracion_flor {
+    display: block;
+  }
+}
+@media (max-width: 768px) {
+  .decoracion_flor {
+    display: block;
+    width: 130px;
+    left: 40%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    bottom: 0;
+    top: unset;
+    right: unset;
+    height: fit-content;
+    svg {
+      width: 100%;
+      height: fit-content;
+      position: relative;
+      bottom: 0;
+    }
+  }
+  
+  footer a+a {
+    margin-left: 0px;
+  }
+}

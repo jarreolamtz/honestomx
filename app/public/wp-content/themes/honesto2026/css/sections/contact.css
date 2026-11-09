@@ -1,0 +1,257 @@
+body {
+  background: transparent;
+}
+.site {
+  padding-top: 220px;
+}
+#welcome {
+  overflow-x: clip;
+  overflow-y: visible;
+  max-width: 100vw;
+  position: relative;
+  & > .row {
+    max-width: 100vw;
+  }
+  h1 {
+    font-weight: 900 !important;
+  }
+  .doodle_mano {
+    position: absolute;
+    right: -4.5vw;
+    top: -19.2vw;
+    width: 50vw;
+    z-index: -1;
+  }
+  .doodle_sides {
+    overflow: hidden;
+    padding-block: 4ch;
+    .doodle_corazon {
+      position: absolute;
+      right: 0;
+      top: 10ch;
+      z-index: 1;
+      max-width: 50vw;
+      img {
+        width: 100%;
+      }
+    }
+    .doodle_left {
+      position: absolute;
+      left: 0;
+      top: 0;
+      object-position: top center;
+      object-fit: contain;
+      width: clamp(10vw, 11vw, 15vw);
+    }
+    .doodle_right {
+      position: absolute;
+      right: 0;
+      top: 0;
+      object-position: top center;
+      object-fit: contain;
+      width: clamp(10vw, 11vw, 15vw);
+    }
+    & > .row {
+      .doodle_horizontal {
+        position: absolute;
+        z-index: -2;
+        left: 50%;
+        top: .05vw;
+        background-size: 100% auto;
+        height: 1vw;
+        width: calc(100% - 10.8vw);
+        overflow: hidden;
+        -webkit-transform: translateX(calc(-50% + 1vw));
+        -ms-transform: translateX(calc(-50% + 1vw));
+        transform: translateX(calc(-50% + 1vw));
+        padding: 0;
+        object-fit: cover;
+        object-position: center center;
+      }
+    }
+  }
+  .formulario {
+    margin-top: 3ch;
+    .custom_form {
+      p {
+        font-weight: bold;
+        font-size: 32px;
+        margin-top: 2ch;
+      }
+      label {
+        font-weight: bold;
+        font-size: 32px;
+        line-height: 1;
+      }
+      .label-1 {
+        display: flex;
+        flex-direction: column;
+        textarea {
+          height: 155px;
+          width: 100%;
+          margin-top: 2ch;
+        }
+      }
+    }
+    input, textarea {
+      font-size: 16px;
+      min-height: 6ch;
+      & + span {
+        font-size: 16px;
+      }
+    }
+    input[type="submit"] {
+      background-size: contain;
+      background-image: url(../../img/doodles/sendit.svg);
+      background-repeat: no-repeat;
+      background-position: center center;
+      aspect-ratio: 251 / 178 !important;
+      position: relative;
+      display: block;
+      width: 251px;
+      height: auto !important;
+      border: 0;
+      background-color: transparent;
+      color: hsla(310, 100%, 50%, 1);
+      -webkit-transition: background-image .3s ease, color .3s ease;
+      transition: background-image .3s ease, color .3s ease;
+      font-weight: 800;
+      font-size: 30px;
+      margin-inline: auto;
+      margin-top: 1ch;
+      &:hover {
+        color: white;
+        background-image: url(../../img/doodles/sendit_hover.svg);
+      }
+    }
+    select {
+      min-height: 6ch;
+      font-size: 16px;
+      padding-right: 5ch;
+    }
+    .wpcf7-response-output {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      z-index: 99999;
+      background: #fe01c8eb;
+      border: 0;
+      -webkit-box-shadow: 0 0px 0vw 100vw #fe01c8eb;
+      box-shadow: 0 0px 0vw 100vw #fe01c8eb;
+      font-weight: 800;
+      font-size: 40px;
+      width: 100%;
+      text-align: center;
+      color: white !important;
+      margin: 0 !important;
+    }
+  }
+}
+#are_you_an_agency {
+  min-height: 100vh;
+  overflow: clip;
+  position: relative;
+  & > .container-fluid {
+    align-self: start;
+    position: sticky;
+    top: 50%;
+  }
+  h2 {
+    strong {
+      font-weight: 800 !important;
+      text-transform: uppercase;
+    }
+    a {
+      text-decoration: underline;
+      text-decoration-thickness: .07ch;
+      text-underline-offset: .1ch;
+    }
+  }
+}
+/* Media query from 768 to 991 */
+@media (min-width: 768px) and (max-width: 991px) {
+  #welcome {
+    .doodle_mano {
+      right: -12.5vw;
+      top: -18.5vw;
+    }
+  }
+  .text-display {
+    font-weight: 300;
+    font-size: clamp(51px, 6vw, 70px);
+    line-height: 1;
+  }
+}
+/* Media query max 767 */
+@media (max-width: 767px) {
+  .site {
+    padding-top: 145px;
+  }
+  #welcome {
+    & .doodle_sides .doodle_corazon {
+      top: 3ch;
+    }
+    .text-heading {
+      font-size: clamp(42px, 9vw, 70px);
+      line-height: 1;
+      max-width: 60%;
+    }
+    .doodle_mano {
+      right: -21.5vw;
+      top: -29vw;
+      width: 80vw;
+    }
+    & .formulario {
+      & .custom_form {
+        display: flex;
+        flex-direction: column;
+        gap: 3ch;
+        label {
+          font-weight: bold;
+          font-size: 25px;
+          line-height: 1.2;
+          display: flex;
+          flex-direction: column;
+          select {
+            width: 100%;
+          }
+        }
+        br {
+          display: none !important;
+        }
+        p {
+          margin: 0;
+          font-size: 25px;
+          line-height: 1.2;
+        }
+      }
+    }
+  }
+  .text-display {
+    font-weight: 300;
+    font-size: clamp(23px, 6vw, 46px);
+    line-height: 1;
+  }
+  .doodle_vertical.doodle_right {
+    display: none;
+  }
+  #welcome .doodle_sides .doodle_vertical.doodle_left {
+    left: -12vw;
+    width: clamp(22vw, 18vw, 19vw);
+  }
+  #welcome .doodle_sides .row .doodle_horizontal {
+    left: 1.3vw;
+    height: 1.1vw;
+    transform: none;
+  }
+  #are_you_an_agency {
+    padding-block: 20vh;
+  }
+  /* #welcome .doodle_sides > .row {
+    height: 1.5vw;
+    transform: translateX(calc(-50% - 2vw));
+  } */
+}
