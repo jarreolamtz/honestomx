@@ -21,7 +21,7 @@
   elseif (is_singular('shop')):
     include 'organisms/organism_producto.php';
   else:
-    get_template_part('404');
+    get_template_part('organisms/organism_page');
   endif;
 ?>
 </div>

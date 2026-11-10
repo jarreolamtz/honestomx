@@ -1,0 +1,19 @@
+/* Páginas normales (privacy-policy, terms-conditions, shop, etc.) */
+/* El header es fixed-top: se deja espacio para que el contenido no quede debajo */
+.site {
+  padding-top: 180px;
+  padding-bottom: 140px;
+}
+/* En shop el header no es fixed (ver header.php) */
+body[page-name="shop"] .site {
+  padding-top: 0;
+}
+#section-page .page-title {
+  margin-bottom: 32px;
+}
+@media (max-width: 767px) {
+  .site {
+    padding-top: 140px;
+    padding-bottom: 40px;
+  }
+}

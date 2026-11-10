@@ -1,25 +1,42 @@
-.loader {
-  display: none !important; }
-
-.loader * {
-  display: none !important; }
-
-header, footer {
-  display: none !important; }
-
-.center-xy {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center; }
-  .center-xy img {
-    height: 80px !important; }
-  .center-xy p {
-    margin-top: 40px; }
-  .center-xy .button {
-    padding: 20px;
-    margin-top: 40px;
-    display: inline-block; }
-
-/*# sourceMappingURL=404.css.map */
+/* 404: con header y footer del sitio, contenido centrado en la pantalla */
+#section-404 {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-block: 160px 140px;
+}
+#section-404 > .row {
+  width: 100%;
+}
+#section-404 .titulo_404 {
+  margin: 0;
+  font-size: clamp(120px, 24vw, 320px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -.05em;
+}
+#section-404 .texto_404 {
+  margin: 16px 0 32px;
+  font-size: 20px;
+}
+#section-404 .btn_404 {
+  display: inline-block;
+  padding: 10px 24px;
+  border-radius: 80px;
+  background-color: #FE00C8;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: opacity 300ms ease;
+}
+#section-404 .btn_404:hover,
+#section-404 .btn_404:focus-visible {
+  color: #fff;
+  opacity: .85;
+}
+@media (max-width: 767px) {
+  #section-404 {
+    padding-block: 120px 80px;
+  }
+}
