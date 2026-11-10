@@ -9,6 +9,7 @@
             <h1><?php the_title(); ?></h1>
           </ul>
         </div>
+      </div>
     </div>
   </div>
 </section>

@@ -66,9 +66,7 @@
 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-dateFormat/1.0/jquery.dateFormat.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.js">
-<script src="js/splide-extension-auto-scroll.min.js"></script>
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.js"></script>
   <!-- Mouse -->
   <!-- <script src="js/plugins/assets.js"></script>
   <script src="js/plugins/cursor.js"></script> -->
@@ -76,7 +74,7 @@
   <?php wp_footer();?>
 
 
-  <!-- Loader 
+  <!-- Loader -->
   <script>
   setTimeout(function(){
   $(document).scrollTop(0);
@@ -85,7 +83,7 @@
   $(document).scrollTop(0);
   $(".loader").fadeOut(400);
   }, 1000);
-</script> -->
+</script>
 
 </body>
 </html>

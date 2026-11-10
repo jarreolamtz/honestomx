@@ -25,7 +25,7 @@
              <?php endif; ?>
             </div>
             <p class="label" <?php if ($disponibilidad == 'soldout'): ?>style="opacity: .5; font-size: 31px;"<?php else:?>style="font-size: 31px;"<?php endif; ?> ><?php echo $label; ?></p>
-           </<?php if ($disponibilidad == 'soldout'):?>div<?php else: ?>a<?php endif;?> />
+           </<?php if ($disponibilidad == 'soldout'):?>div<?php else: ?>a<?php endif;?>>
           <?php
              endwhile;
            endif;

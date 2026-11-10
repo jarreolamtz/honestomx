@@ -12,6 +12,11 @@ footer a {
   display: inline-block;
 }
 
+/* Separación entre links sociales/contacto (los legales usan gap) */
+footer .justify-content-end a+a {
+  margin-left: 20px;
+}
+
 footer a:hover {
   color: black;
 }
@@ -56,7 +61,8 @@ body[page-name="work"] {
     }
   }
   
-  footer a+a {
+  footer a+a,
+  footer .justify-content-end a+a {
     margin-left: 0px;
   }
 }
