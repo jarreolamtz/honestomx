@@ -74,16 +74,5 @@
   <?php wp_footer();?>
 
 
-  <!-- Loader -->
-  <script>
-  setTimeout(function(){
-  $(document).scrollTop(0);
-  }, 300);
-  setTimeout(function(){
-  $(document).scrollTop(0);
-  $(".loader").fadeOut(400);
-  }, 1000);
-</script>
-
 </body>
 </html>

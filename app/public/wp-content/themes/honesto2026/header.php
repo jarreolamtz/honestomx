@@ -98,11 +98,6 @@
   <!-- End Google Tag Manager (noscript) -->
 
 
-  <!-- LOADER -->
-  <div class="loader">
-    <img class="img" src="<?php echo get_template_directory_uri(); ?>/img/logo_w_loader.svg" style="max-height: 40px;">
-  </div>
-  
   <!-- CONTENT -->
   <div class="site">
     <div class="site-content">
