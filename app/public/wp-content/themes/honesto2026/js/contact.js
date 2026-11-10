@@ -25,3 +25,34 @@
     body.classList.add('cf7-response-dismissed');
   });
 })();
+
+// Footer y header en blanco mientras la sección rosa (#are_you_an_agency) pasa detrás de ellos (ambos son fixed)
+(function () {
+  var section = document.getElementById('are_you_an_agency');
+  if (!section) return;
+  var targets = [
+    { el: document.querySelector('footer'), cls: 'footer-on-pink' },
+    { el: document.querySelector('header'), cls: 'header-on-pink' }
+  ].filter(function (t) { return t.el; });
+
+  var ticking = false;
+  function update() {
+    ticking = false;
+    var s = section.getBoundingClientRect();
+    targets.forEach(function (t) {
+      var r = t.el.getBoundingClientRect();
+      // Activo cuando la sección cubre la mitad vertical del elemento
+      var middle = r.top + r.height / 2;
+      document.body.classList.toggle(t.cls, s.top <= middle && s.bottom >= middle);
+    });
+  }
+  function onScroll() {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+})();

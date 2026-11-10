@@ -297,3 +297,25 @@ body.cf7-response-open .cf7-response-close {
 body.cf7-response-dismissed .wpcf7-response-output {
   display: none !important;
 }
+
+/* Footer sobre la sección rosa: textos rosas pasan a blanco */
+footer a.color-pink {
+  transition: color 300ms ease;
+}
+body.footer-on-pink footer a.color-pink,
+body.footer-on-pink footer a.color-pink:hover,
+body.footer-on-pink footer a.color-pink:active,
+body.footer-on-pink footer a.color-pink:visited {
+  color: #fff;
+}
+body.footer-on-pink footer a.color-pink:hover::after {
+  background: #fff;
+}
+
+/* Header sobre la sección rosa: link activo (rosa por a[aria-current]) pasa a blanco */
+header a[aria-current] {
+  transition: color 300ms ease;
+}
+body.header-on-pink header a[aria-current] {
+  color: #fff !important;
+}
