@@ -32,7 +32,23 @@ body {
       z-index: 1;
       max-width: 50vw;
       img {
+        display: block;
         width: 100%;
+      }
+      /* corazon_hover.svg (309x288) = corazon.svg (279x260) desplazado 11.425/18.908px */
+      .corazon_hover {
+        position: absolute;
+        left: -4.095%;   /* -11.425 / 279 */
+        top: -7.272%;    /* -18.908 / 260 */
+        width: 110.753%; /*  309 / 279 */
+        max-width: none;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 300ms ease;
+      }
+      &:hover .corazon_hover,
+      &:focus-visible .corazon_hover {
+        opacity: 1;
       }
     }
     .doodle_left {
@@ -239,8 +255,7 @@ body {
     display: none;
   }
   #welcome .doodle_sides .doodle_vertical.doodle_left {
-    left: -12vw;
-    width: clamp(22vw, 18vw, 19vw);
+    display: none;
   }
   #welcome .doodle_sides .row .doodle_horizontal {
     left: 1.3vw;
@@ -254,4 +269,31 @@ body {
     height: 1.5vw;
     transform: translateX(calc(-50% - 2vw));
   } */
+}
+
+/* CF7: botón X para cerrar el mensaje de respuesta */
+.cf7-response-close {
+  display: none;
+  position: fixed;
+  top: 40px;
+  right: 40px;
+  z-index: 100000;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: white;
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 1;
+  cursor: pointer;
+}
+.cf7-response-close::after,
+.cf7-response-close::before {
+  content: none !important;
+}
+body.cf7-response-open .cf7-response-close {
+  display: block;
+}
+body.cf7-response-dismissed .wpcf7-response-output {
+  display: none !important;
 }

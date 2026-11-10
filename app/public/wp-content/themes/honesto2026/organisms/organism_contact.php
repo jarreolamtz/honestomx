@@ -15,6 +15,7 @@ if ($wp_query->have_posts()) : while ($wp_query->have_posts()) :  $wp_query->the
       <div class="col-12 col-lg-10  doodle_sides position-relative ">
         <a class="doodle_corazon" href="#are_you_an_agency">
           <img src="<?php echo get_template_directory_uri() . '/img/doodles/corazon.svg'; ?>" alt="Corazon">
+          <img class="corazon_hover" src="<?php echo get_template_directory_uri() . '/img/doodles/corazon_hover.svg'; ?>" alt="" aria-hidden="true">
         </a>
         <img class="doodle_vertical doodle_left" height="4713px" src="<?php echo get_template_directory_uri() . '/img/doodles/form_vertical.svg'; ?>" alt="Doodle Left">
         <div class="row justify-content-center">
@@ -43,7 +44,7 @@ if ($wp_query->have_posts()) : while ($wp_query->have_posts()) :  $wp_query->the
           <h2 class="text-display color-white">Are you an agency?</br>
             <strong>We'd love to co-create.</strong></br>
             contact us at
-            <a class="color-white text-underline" href="mailto:info@honestocreative.com">info@honestocreative.com</a>
+            <a class="color-white text-underline" href="mailto:hi@honestocreative.com">hi@honestocreative.com</a>
           </h2>
         </div>
       </div>

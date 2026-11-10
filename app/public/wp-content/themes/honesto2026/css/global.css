@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Taviraj:wght@300;400&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
 
@@ -42,6 +42,9 @@ body {
   font-size: 21px;
   line-height: 24px;
   letter-spacing: -.1ch;
+}
+.site {
+  z-index: 1;
 }
 
 .color-black {
@@ -296,14 +299,7 @@ button,
   box-shadow: none;
 }
 
-.button::after,
-button::after,
-input[type='submit']::after {
-  content: "⟶";
-  display: inline-block;
-  color: white;
-  font-size: 17px;
-}
+
 
 .ml-form-recaptcha {
   margin-top: 16px !important;

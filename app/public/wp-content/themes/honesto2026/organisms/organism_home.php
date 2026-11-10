@@ -19,8 +19,8 @@
   <!-- WELCOME -->
   <section id="welcome" class="container-fluid" style="padding-block: 50px;">
     <!-- COLOR ME -->
-     <div class="row">
-      <div class="col-12 mx-auto text-center">
+     <div class="row justify-content-center">
+      <div class="col-12 col-md-8 text-center text-md-end">
         <span class="color_me">Color me!</span>
       </div>
      </div>
@@ -69,40 +69,52 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       // Color Picker
+      const welcome = document.getElementById('welcome');
       const colorInputs = document.querySelectorAll('input[name="color"]');
-      const svgElement = document.querySelector('#svg-coloreable svg');
       const svgElementPaths = document.querySelectorAll('#svg-coloreable svg #coloreable path');
-      const crayon = document.querySelector('.crayon');
       const crayon_pointer = document.querySelector('.crayon svg #selected_color');
-      const borrador = document.querySelector('.crayon svg #borrador');
+      const borrador = document.querySelector('.crayon svg #borrador_completo') || document.querySelector('.crayon svg #borrador');
+      let erasing = false;
+
+      function setErasing(state) {
+        erasing = state;
+        welcome.classList.toggle('is-erasing', state);
+      }
+      // Regresa el path a su fill original (atributo del SVG)
+      function restorePath(path) {
+        path.style.fill = '';
+      }
 
       crayon_pointer.style.fill = colorInputs[0].value;
+
+      // Click: activa/desactiva el modo borrador
       borrador.addEventListener('click', function() {
-        svgElementPaths.forEach(function(path) {
-          path.style.fill = '#FFFFFF';
-        });
-        svgElementPaths2.forEach(function(path) {
-          path.style.fill = '#FFFFFF';
+        setErasing(!erasing);
+      });
+      // Doble click: borra todo
+      borrador.addEventListener('dblclick', function() {
+        svgElementPaths.forEach(restorePath);
+        setErasing(false);
+      });
+
+      // Elegir un color (aunque sea el mismo) sale del modo borrador
+      colorInputs.forEach(input => {
+        input.addEventListener('click', function() {
+          setErasing(false);
+          crayon_pointer.style.fill = this.value;
         });
       });
 
-      colorInputs.forEach(input => {
-        input.addEventListener('change', function() {
-          const color = this.value;
-          console.log(color);
-          crayon_pointer.style.fill = color;
-        });
-      });
       svgElementPaths.forEach(function(path) {
         path.addEventListener('click', function() {
-          console.log(this);
+          if (erasing) {
+            restorePath(this);
+            return;
+          }
           const selectedColor = document.querySelector('input[name="color"]:checked').value;
           this.style.fill = selectedColor;
         });
       });
-
-
-
     });
   </script>
 <?php endwhile; endif; wp_reset_postdata(); wp_reset_query(); ?>

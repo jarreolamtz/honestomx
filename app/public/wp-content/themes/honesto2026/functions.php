@@ -93,4 +93,23 @@ add_action('admin_init', 'remove_textarea');
 add_shortcode( 'br', 'line_break_shortcode' );
 add_action( 'init', 'wpb_custom_new_menu' );
 
+// Nav: data-text en los links del menú para reservar el ancho del bold (evita saltos en hover/active)
+function honesto_nav_link_data_text($atts, $item, $args) {
+  if (in_array($args->theme_location, array('header-menu', 'header-menu-out'), true)) {
+    $atts['data-text'] = wp_strip_all_tags($item->title);
+  }
+  return $atts;
+}
+add_filter('nav_menu_link_attributes', 'honesto_nav_link_data_text', 10, 3);
+
+// CF7: agrega una opción "Select" deshabilitada y seleccionada por default a cada select
+function honesto_cf7_select_placeholder($html) {
+  return preg_replace(
+    '/(<select\b[^>]*>)/i',
+    '$1<option value="" disabled selected>Select</option>',
+    $html
+  );
+}
+add_filter('wpcf7_form_elements', 'honesto_cf7_select_placeholder');
+
 ?>

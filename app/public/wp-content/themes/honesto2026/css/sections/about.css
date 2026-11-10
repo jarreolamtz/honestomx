@@ -41,6 +41,7 @@ body[page-name="about"] header {
 #section-welcome .titulo { 
   grid-area: 1 / 1 / 3 / 7; 
   font-size: clamp(8vw, 9vw, 10vw);
+  font-weight: 300;
   line-height: 1.1;
 }
 #section-welcome .descripcion {
