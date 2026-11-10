@@ -6,6 +6,8 @@ footer {
   font-size: 13px !important;
 }
 
+footer .row { align-items: flex-end; }
+
 footer a {
   display: inline-block;
 }
@@ -14,16 +16,11 @@ footer a:hover {
   color: black;
 }
 
-footer a+a {
-  margin-left: 20px;
-}
-
 .decoracion_flor {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   right: 40px;
   width: auto;
-  z-index: 2;
   pointer-events: none;
   user-select: none;
   -webkit-user-select: none;

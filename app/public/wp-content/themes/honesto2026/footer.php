@@ -1,11 +1,12 @@
 <?php
   $decoracionFlor = get_template_directory() . '/img/doodles/decoracion_flor.svg';
 ?>
+  
 <footer class="container-fluid text-body-med fixed-bottom">
   <?php if(!wp_is_mobile()):?>
     <div class="row w-100">
       <div class="col-md-6">
-        <p>© HNST 2025      (  <a href="">Privacy Policies</a> / <a href="">Terms & Conditions</a>  )</p>
+        <p style="display: flex; gap: 8px;">© HNST 2025      (  <a href="/privacy-policy" target="_blank">Privacy Policies</a> / <a href="/terms-conditions" target="_blank">Terms & Conditions</a>  )</p>
       </div>
       <div class="col-md-6">
         <div class="row">
@@ -27,7 +28,7 @@
       <div class="col-5">
         <span>© HNST 2025</span>
         <br>
-        <!-- <a href="/privacy-policy">Privacy Policies</a> -->
+        <!-- <a href="/privacy-policy" target="_blank">Privacy Policies</a> -->
       </div>
       <div class="col-7 text-right d-flex flex-column">
         <div class="d-flex flex-row gap-2">
@@ -37,10 +38,11 @@
           <a class="color-black" href="https://www.instagram.com/honesto.cc/" target="_blank">Ig</a>
           <a class="color-black" href="https://www.behance.net/honesto" target="_blank">Be</a>
         </div>
-        <!-- <a class="color-black" href="/terms-conditions">Terms & Conditions</a> -->
+        <!-- <a class="color-black" href="/terms-conditions" target="_blank">Terms & Conditions</a> -->
       </div>
     </div>
   <?php endif; ?>
+  
   <!-- Decoracion flor -->
   <?php if(!wp_is_mobile()): ?>
     <?php if( is_page('work') ): ?>
@@ -54,6 +56,7 @@
     </div>
   <?php endif; ?>
 </footer>
+
 </div>
 </div>
 
@@ -64,7 +67,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-dateFormat/1.0/jquery.dateFormat.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.js">
-
+<script src="js/splide-extension-auto-scroll.min.js"></script>
 </script>
   <!-- Mouse -->
   <!-- <script src="js/plugins/assets.js"></script>
@@ -73,7 +76,7 @@
   <?php wp_footer();?>
 
 
-  <!-- Loader -->
+  <!-- Loader 
   <script>
   setTimeout(function(){
   $(document).scrollTop(0);
@@ -82,6 +85,7 @@
   $(document).scrollTop(0);
   $(".loader").fadeOut(400);
   }, 1000);
-</script>
+</script> -->
+
 </body>
 </html>

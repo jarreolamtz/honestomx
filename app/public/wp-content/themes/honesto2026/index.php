@@ -12,6 +12,14 @@
     get_template_part('organisms/organism_proyecto');
   elseif ( is_page('contact') ):
     get_template_part('organisms/organism_contact');
+  elseif ( is_page('terms-conditions') ):
+    get_template_part('organisms/organism_legales');
+  elseif ( is_page('privacy-policy') ):
+    get_template_part('organisms/organism_legales');
+  elseif (is_page('shop')):
+    include 'organisms/organism_shop.php';
+  elseif (is_singular('shop')):
+    include 'organisms/organism_producto.php';
   else:
     get_template_part('404');
   endif;

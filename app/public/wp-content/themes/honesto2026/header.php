@@ -83,7 +83,7 @@
   <meta property="og:image" content="https://honesto.co/image.jpg" />
   <meta property="og:description" content="<?php bloginfo('description'); ?>" />
   <meta property="og:site_name" content="<?php bloginfo('name'); ?>" />
-
+  <script src="<?php echo get_template_directory_uri(); ?>/js/splide-extension-auto-scroll.min.js"></script>
   <!-- Stylesheets -->
   <?php wp_head(); ?>
 </head>
@@ -98,15 +98,16 @@
   <!-- End Google Tag Manager (noscript) -->
 
 
-  <!-- LOADER -->
+  <!-- LOADER 
   <div class="loader">
     <img class="img" src="<?php echo get_template_directory_uri(); ?>/img/logo_w_loader.svg" style="max-height: 40px;">
-  </div>
+  </div> -->
+  
   <!-- CONTENT -->
   <div class="site">
     <div class="site-content">
       <!-- HEADER -->
-      <?php if (!is_front_page('organism_home.php')): $fixed = 'fixed-top opacity_effect';
+      <?php if (!is_front_page('organism_home.php') && !is_page('shop')): $fixed = 'fixed-top opacity_effect';
       else: $fixed = '';
       endif; ?>
       <header class="transition-600 <?php echo $fixed  ?>">

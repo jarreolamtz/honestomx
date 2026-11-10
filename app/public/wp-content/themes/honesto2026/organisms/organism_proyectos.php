@@ -51,17 +51,27 @@
   </div>
 </section>
 
+
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     var splide = new Splide('.splide', {
       type   : 'loop',
+      autoplay: true,
+      interval: 3000,
+      pauseOnHover: true,
+      autoScroll: {
+       speed: .5,
+       pauseOnHover: true,
+       pauseOnFocus: false,
+       rewind: false
+      },
       autoWidth: true,
       gap: '15px',
       pagination: false,
       breakpoints: {
-        768: { destroy: true }
+       768: { destroy: true }
       }
     });
-    splide.mount();
+    splide.mount( window.splide.Extensions );
   });
 </script>

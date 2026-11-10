@@ -113,8 +113,18 @@ button.splide__arrow {
     display: none;
   }
 }
+/* media querie mobile min 769px */
+@media screen and (min-width: 769px){
+#section-welcome {
+  .splide {
+    width: calc(100% + 60px);
+    margin-left: -30px;
+    }
+  }
+}
+
 /* media querie mobile max 768px */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .site {
     position: relative;
     padding-bottom: 120px;
