@@ -7,7 +7,7 @@
 #   SFTP_HOST        Servidor SFTP de IONOS (p. ej. access-xxxxxxx.webspace-host.com)
 #   SFTP_USER        Usuario SFTP
 #   SFTP_PASSWORD    Contraseña SFTP
-#   SFTP_THEME  Ruta del tema en el servidor; debe terminar en /honesto2026
+#   SFTP_THEME_PATH  Ruta del tema en el servidor; debe terminar en /honesto2026
 #                    (p. ej. /wp-content/themes/honesto2026)
 #   SFTP_PORT        (opcional) Puerto SFTP; 22 por defecto
 #
@@ -74,22 +74,22 @@ jobs:
           SFTP_HOST: ${{ secrets.SFTP_HOST }}
           SFTP_USER: ${{ secrets.SFTP_USER }}
           SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
-          SFTP_THEME: ${{ secrets.SFTP_THEME }}
+          SFTP_THEME_PATH: ${{ secrets.SFTP_THEME_PATH }}
         run: |
           missing=""
           [ -z "$SFTP_HOST" ] && missing="$missing SFTP_HOST"
           [ -z "$SFTP_USER" ] && missing="$missing SFTP_USER"
           [ -z "$SFTP_PASSWORD" ] && missing="$missing SFTP_PASSWORD"
-          [ -z "$SFTP_THEME" ] && missing="$missing SFTP_THEME"
+          [ -z "$SFTP_THEME_PATH" ] && missing="$missing SFTP_THEME_PATH"
           if [ -n "$missing" ]; then
             echo "::error::Faltan secrets:$missing"
             exit 1
           fi
           # Protección: la sincronización borra en el servidor lo que no está en el repo,
           # así que la ruta destino tiene que ser la carpeta del tema y nada más arriba.
-          case "${SFTP_THEME%/}" in
+          case "${SFTP_THEME_PATH%/}" in
             */honesto2026) ;;
-            *) echo "::error::SFTP_THEME debe terminar en /honesto2026"; exit 1 ;;
+            *) echo "::error::SFTP_THEME_PATH debe terminar en /honesto2026"; exit 1 ;;
           esac
           [ -f "${LOCAL_THEME}style.css" ] || { echo "::error::No se encontró el tema en ${LOCAL_THEME}"; exit 1; }
 
@@ -102,12 +102,12 @@ jobs:
           SFTP_PORT: ${{ secrets.SFTP_PORT }}
           SFTP_USER: ${{ secrets.SFTP_USER }}
           LFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
-          SFTP_THEME: ${{ secrets.SFTP_THEME }}
+          SFTP_THEME_PATH: ${{ secrets.SFTP_THEME_PATH }}
           DRY: ${{ steps.mode.outputs.dry }}
         run: |
           DRY_FLAG=""
           [ "$DRY" = "true" ] && DRY_FLAG="--dry-run"
-          REMOTE="${SFTP_THEME%/}/"
+          REMOTE="${SFTP_THEME_PATH%/}/"
           # --reverse: sube local → servidor
           # --delete: borra en el servidor archivos del tema que ya no están en el repo
           # Sin --ignore-time a propósito: el checkout deja todos los archivos con fecha nueva,
