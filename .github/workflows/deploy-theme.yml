@@ -1,0 +1,125 @@
+# Deploy del tema honesto2026 al hosting de IONOS por SFTP.
+#
+# Solo sube la carpeta del tema (app/public/wp-content/themes/honesto2026).
+# No toca WordPress core, plugins, uploads, base de datos ni wp-config.php.
+#
+# Secrets requeridos (Settings → Secrets and variables → Actions → Secrets):
+#   SFTP_HOST        Servidor SFTP de IONOS (p. ej. access-xxxxxxx.webspace-host.com)
+#   SFTP_USER        Usuario SFTP
+#   SFTP_PASSWORD    Contraseña SFTP
+#   SFTP_THEME  Ruta del tema en el servidor; debe terminar en /honesto2026
+#                    (p. ej. /wp-content/themes/honesto2026)
+#   SFTP_PORT        (opcional) Puerto SFTP; 22 por defecto
+#
+# Variable (Settings → Secrets and variables → Actions → Variables):
+#   DEPLOY_ENABLED   Ponerla en "true" para que los push a main suban archivos.
+#                    Mientras no exista o no sea "true", los push solo hacen una
+#                    simulación (dry run) que lista lo que cambiaría, sin subir nada.
+#
+# Ejecución manual: Actions → "Deploy tema a IONOS" → Run workflow
+# (por defecto también es simulación; hay que desmarcar "dry_run" para subir).
+
+name: Deploy tema a IONOS
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'app/public/wp-content/themes/honesto2026/**'
+      - '.github/workflows/deploy-theme.yml'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Simulación: solo listar cambios, sin subir nada'
+        type: boolean
+        default: true
+
+# Nunca dos deploys al mismo tiempo; el más nuevo espera al anterior
+concurrency:
+  group: deploy-theme
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      LOCAL_THEME: app/public/wp-content/themes/honesto2026/
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Definir modo (simulación o deploy real)
+        id: mode
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            DRY="${{ inputs.dry_run }}"
+          elif [ "${{ vars.DEPLOY_ENABLED }}" = "true" ]; then
+            DRY="false"
+          else
+            DRY="true"
+          fi
+          echo "dry=$DRY" >> "$GITHUB_OUTPUT"
+          if [ "$DRY" = "true" ]; then
+            echo "::notice::Modo SIMULACIÓN: no se subirá ni borrará nada en el servidor."
+          else
+            echo "::notice::Modo DEPLOY REAL: se sincronizará el tema en el servidor."
+          fi
+
+      - name: Validar configuración
+        env:
+          SFTP_HOST: ${{ secrets.SFTP_HOST }}
+          SFTP_USER: ${{ secrets.SFTP_USER }}
+          SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
+          SFTP_THEME: ${{ secrets.SFTP_THEME }}
+        run: |
+          missing=""
+          [ -z "$SFTP_HOST" ] && missing="$missing SFTP_HOST"
+          [ -z "$SFTP_USER" ] && missing="$missing SFTP_USER"
+          [ -z "$SFTP_PASSWORD" ] && missing="$missing SFTP_PASSWORD"
+          [ -z "$SFTP_THEME" ] && missing="$missing SFTP_THEME"
+          if [ -n "$missing" ]; then
+            echo "::error::Faltan secrets:$missing"
+            exit 1
+          fi
+          # Protección: la sincronización borra en el servidor lo que no está en el repo,
+          # así que la ruta destino tiene que ser la carpeta del tema y nada más arriba.
+          case "${SFTP_THEME%/}" in
+            */honesto2026) ;;
+            *) echo "::error::SFTP_THEME debe terminar en /honesto2026"; exit 1 ;;
+          esac
+          [ -f "${LOCAL_THEME}style.css" ] || { echo "::error::No se encontró el tema en ${LOCAL_THEME}"; exit 1; }
+
+      - name: Instalar lftp
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+
+      - name: Sincronizar tema por SFTP
+        env:
+          SFTP_HOST: ${{ secrets.SFTP_HOST }}
+          SFTP_PORT: ${{ secrets.SFTP_PORT }}
+          SFTP_USER: ${{ secrets.SFTP_USER }}
+          LFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
+          SFTP_THEME: ${{ secrets.SFTP_THEME }}
+          DRY: ${{ steps.mode.outputs.dry }}
+        run: |
+          DRY_FLAG=""
+          [ "$DRY" = "true" ] && DRY_FLAG="--dry-run"
+          REMOTE="${SFTP_THEME%/}/"
+          # --reverse: sube local → servidor
+          # --delete: borra en el servidor archivos del tema que ya no están en el repo
+          # Sin --ignore-time a propósito: el checkout deja todos los archivos con fecha nueva,
+          # así que se re-sube el tema completo (~100 archivos). Comparar solo por tamaño
+          # se saltaría cambios que no alteran el tamaño (p. ej. "reach" → "Reach").
+          lftp --env-password -u "$SFTP_USER" -p "${SFTP_PORT:-22}" "sftp://$SFTP_HOST" -e "
+            set sftp:auto-confirm yes;
+            set net:max-retries 2;
+            set net:timeout 30;
+            mirror --reverse --delete --verbose=1 $DRY_FLAG \
+              --exclude-glob .DS_Store \
+              --exclude-glob .git* \
+              '$LOCAL_THEME' '$REMOTE';
+            bye
+          "
