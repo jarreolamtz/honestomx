@@ -113,16 +113,4 @@
     </div>
   </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var splide = new Splide('.splide', {
-      type   : 'loop',
-      autoWidth: true,
-      focus  : 'center',
-      gap: '15px',
-      pagination: false,
-      });
-      splide.mount();
-    });
-  </script>
 <?php endwhile; endif; wp_reset_postdata(); wp_reset_query(); ?>
