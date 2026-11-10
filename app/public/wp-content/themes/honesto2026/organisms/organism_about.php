@@ -78,6 +78,8 @@ if ($wp_query->have_posts()) : while ($wp_query->have_posts()) :  $wp_query->the
             </div>
           <?php endif; endforeach; ?>
         </div>
+        <!-- Reach us -->
+        <a class="btn_reach_us" href="<?php echo esc_url(home_url('/contact/')); ?>">Reach us here!</a>
       </div>
       <!-- Decoracion (Desktop) -->
       <div class="decoracion-desktop">

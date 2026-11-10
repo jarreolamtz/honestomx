@@ -141,3 +141,21 @@ body[page-name="about"] header {
   overflow-y: hidden;
   /* No vendor prefix needed for overflow-y */
 }
+/* Botón "reach us here!" debajo de las taxonomías */
+#section-welcome .btn_reach_us {
+  display: inline-block;
+  margin-top: 32px;
+  padding: 10px 24px;
+  border-radius: 80px;
+  background-color: #FE00C8;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: opacity 300ms ease;
+}
+#section-welcome .btn_reach_us:hover,
+#section-welcome .btn_reach_us:focus-visible {
+  color: #fff;
+  opacity: .85;
+}

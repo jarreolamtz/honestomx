@@ -298,17 +298,20 @@ body.cf7-response-dismissed .wpcf7-response-output {
   display: none !important;
 }
 
-/* Footer sobre la sección rosa: textos rosas pasan a blanco */
-footer a.color-pink {
-  transition: color 300ms ease;
-}
-body.footer-on-pink footer a.color-pink,
-body.footer-on-pink footer a.color-pink:hover,
-body.footer-on-pink footer a.color-pink:active,
-body.footer-on-pink footer a.color-pink:visited {
+/* Contacto: footer con fondo rosa y texto blanco */
+body[page-name="contact"] footer {
+  background-color: #FE00C8;
   color: #fff;
 }
-body.footer-on-pink footer a.color-pink:hover::after {
+body[page-name="contact"] footer p,
+body[page-name="contact"] footer span,
+body[page-name="contact"] footer a,
+body[page-name="contact"] footer a:hover,
+body[page-name="contact"] footer a:active,
+body[page-name="contact"] footer a:visited {
+  color: #fff;
+}
+body[page-name="contact"] footer a.color-pink:hover::after {
   background: #fff;
 }
 

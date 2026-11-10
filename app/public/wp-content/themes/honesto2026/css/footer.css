@@ -66,3 +66,11 @@ body[page-name="work"] {
     margin-left: 0px;
   }
 }
+/* Mobile: en about, contact y work el footer va al final de la página (sin flotar sobre el contenido) */
+@media (max-width: 768px) {
+  body[page-name="about"] footer.fixed-bottom,
+  body[page-name="contact"] footer.fixed-bottom,
+  body[page-name="work"] footer.fixed-bottom {
+    position: relative;
+  }
+}

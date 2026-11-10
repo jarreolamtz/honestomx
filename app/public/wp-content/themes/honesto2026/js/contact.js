@@ -26,12 +26,11 @@
   });
 })();
 
-// Footer y header en blanco mientras la sección rosa (#are_you_an_agency) pasa detrás de ellos (ambos son fixed)
+// Header en blanco mientras la sección rosa (#are_you_an_agency) pasa detrás de él (es fixed)
 (function () {
   var section = document.getElementById('are_you_an_agency');
   if (!section) return;
   var targets = [
-    { el: document.querySelector('footer'), cls: 'footer-on-pink' },
     { el: document.querySelector('header'), cls: 'header-on-pink' }
   ].filter(function (t) { return t.el; });
 
