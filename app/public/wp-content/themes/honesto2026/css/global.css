@@ -305,23 +305,6 @@ button,
     padding: 0 16px;
   }
 
-
-  #videoPlayer iframe {
-    width: calc(100vw - 40px);
-    height: calc(63vw - 40px);
-  }
-
-  #videoPlayer .videoDiv {
-    font-size: 0;
-    box-shadow: 0 0 0px 100vw rgba(0, 0, 0, 0.9);
-  }
-
-  #videoPlayer .closeVideo {
-    top: 35px;
-    right: 18px;
-    font-size: 20px;
-  }
-
   .text-display {
     font-size: 80px;
     line-height: 72px;
