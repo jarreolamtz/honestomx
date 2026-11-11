@@ -23,7 +23,7 @@
     } catch (e) {}
   </script>
 
-  <!-- Google Tag Manager -->
+  <!-- Google Tag Manager. Google Analytics (GA4) se configura dentro de GTM, no aquí. -->
   <script>
     (function(w, d, s, l, i) {
       w[l] = w[l] || [];
@@ -38,23 +38,11 @@
       j.src =
         'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
       f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'REPLACE');
+    })(window, document, 'script', 'dataLayer', 'GTM-5FFWLWJV');
   </script>
   <!-- End Google Tag Manager -->
 
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=REPLACE"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-
-    gtag('config', 'REPLACE');
-  </script>
 
   <!-- Iso -->
   <meta charset="UTF-8">
@@ -82,7 +70,7 @@
 
 <body post-type="<?php echo get_post_type() ?>" page-name="<?php echo get_post_field('post_name', get_post()); ?>">
   <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=REPLACE"
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FFWLWJV"
       height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
