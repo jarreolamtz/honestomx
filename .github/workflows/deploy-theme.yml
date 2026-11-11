@@ -9,7 +9,7 @@
 #   SFTP_PASSWORD    Contraseña SFTP
 #   SFTP_THEME_PATH  Ruta del tema en el servidor; debe terminar en /honesto2026
 #                    (p. ej. /wp-content/themes/honesto2026)
-#   SFTP_KNOWN_HOSTS Huella(s) del servidor, en formato known_hosts. Se obtiene con:
+#   SFTP_KNOWN_HOST Huella(s) del servidor, en formato known_hosts. Se obtiene con:
 #                      ssh-keyscan -t ed25519,ecdsa,rsa <SFTP_HOST>
 #                    (con puerto distinto de 22: ssh-keyscan -p <puerto> ...)
 #                    El deploy se niega a conectar si el servidor no presenta esa huella.
@@ -79,10 +79,10 @@ jobs:
           SFTP_USER: ${{ secrets.SFTP_USER }}
           SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
           SFTP_THEME_PATH: ${{ secrets.SFTP_THEME_PATH }}
-          SFTP_KNOWN_HOSTS: ${{ secrets.SFTP_KNOWN_HOSTS }}
+          SFTP_KNOWN_HOST: ${{ secrets.SFTP_KNOWN_HOST }}
         run: |
           missing=""
-          [ -z "$SFTP_KNOWN_HOSTS" ] && missing="$missing SFTP_KNOWN_HOSTS"
+          [ -z "$SFTP_KNOWN_HOST" ] && missing="$missing SFTP_KNOWN_HOST"
           [ -z "$SFTP_HOST" ] && missing="$missing SFTP_HOST"
           [ -z "$SFTP_USER" ] && missing="$missing SFTP_USER"
           [ -z "$SFTP_PASSWORD" ] && missing="$missing SFTP_PASSWORD"
@@ -104,10 +104,10 @@ jobs:
 
       - name: Registrar huella del servidor
         env:
-          SFTP_KNOWN_HOSTS: ${{ secrets.SFTP_KNOWN_HOSTS }}
+          SFTP_KNOWN_HOST: ${{ secrets.SFTP_KNOWN_HOST }}
         run: |
           install -d -m 700 ~/.ssh
-          printf '%s\n' "$SFTP_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          printf '%s\n' "$SFTP_KNOWN_HOST" > ~/.ssh/known_hosts
           chmod 600 ~/.ssh/known_hosts
 
       - name: Sincronizar tema por SFTP
