@@ -51,29 +51,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  function show_mobile_menu() {
-    document.querySelectorAll('.mobile-menu-icon-a').forEach(function (el) {
-      el.addEventListener("click", function () {
-        console.log("tap menu");
-        var menu = document.querySelector('.mobile-menu');
-        if (menu) menu.style.display = "block";
-      });
-    });
-  }
-
-  function hide_mobile_menu() {
-    document.querySelectorAll('.mobile-menu-close').forEach(function (el) {
-      el.addEventListener("click", function () {
-        var menu = document.querySelector('.mobile-menu');
-        if (menu) menu.style.display = "none";
-      });
-    });
-  }
-
   // functions
   playVideo();
   // Uncomment if you want to enable GSAP animation
   // proceso_animation();
-  show_mobile_menu();
-  hide_mobile_menu();
 });

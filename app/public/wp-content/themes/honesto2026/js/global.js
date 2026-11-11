@@ -1,34 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-  function show_mobile_menu() {
-    document.querySelectorAll('.mobile-menu-icon-a').forEach(function(el) {
-      el.addEventListener('click', function() {
-        console.log("tap menu");
-        document.querySelectorAll('.mobile-menu').forEach(function(menu) {
-          menu.style.display = 'block';
-          menu.style.opacity = 1;
-        });
-      });
-    });
-  }
-
-  function hide_mobile_menu() {
-    document.querySelectorAll('.mobile-menu-close').forEach(function(el) {
-      el.addEventListener('click', function() {
-        document.querySelectorAll('.mobile-menu').forEach(function(menu) {
-          menu.style.display = 'none';
-        });
-      });
-    });
-
-    document.querySelectorAll('.mobile-menu a').forEach(function(el) {
-      el.addEventListener('click', function() {
-        document.querySelectorAll('.mobile-menu').forEach(function(menu) {
-          menu.style.display = 'none';
-        });
-      });
-    });
-  }
-
   function headerScroll() {
     var winWidth = window.innerWidth;
     var welcomeH = document.getElementById("section-welcome")?.offsetHeight || 0;
@@ -65,8 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // functions
-  show_mobile_menu();
-  hide_mobile_menu();
   headerScroll();
   hover_box();
 });
