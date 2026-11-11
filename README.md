@@ -32,7 +32,7 @@ Lo que no está en la columna izquierda se administra directo en el admin de Wor
 El proyecto usa [Local](https://localwp.com) para correr WordPress en tu computadora.
 
 1. Clona el repo.
-2. Pide al responsable del proyecto un respaldo del sitio para importarlo en Local (la base de datos y las imágenes no están en git).
+2. Crea un sitio en Local e importa un respaldo del sitio real (la base de datos no está en git). Los pasos están en [Respaldos con All-in-One WP Migration](#respaldos-con-all-in-one-wp-migration).
 3. En Local, el sitio se llama `honesto.local`.
 4. Todo el código del tema está en `app/public/wp-content/themes/honesto2026/`.
 
@@ -89,6 +89,55 @@ Todo el tema está en git. Para regresar a como estaba:
 
 1. Revierte el commit que causó el problema (`git revert <commit>`) y haz push.
 2. Publica de nuevo (paso 3).
+
+---
+
+## Respaldos con All-in-One WP Migration
+
+El sitio tiene instalado el plugin **All-in-One WP Migration**. Con él se saca una copia completa del sitio (base de datos, imágenes, plugins y temas) en un solo archivo `.wpress`. Sirve para dos cosas:
+
+- **Tener una copia de seguridad** antes de un cambio grande.
+- **Llevarte el sitio real a tu computadora** para trabajar con el contenido de verdad.
+
+> ⚠️ **El archivo `.wpress` tiene información privada**: usuarios, contraseñas cifradas y los mensajes que llegan por el formulario de contacto. No lo compartas por canales públicos ni lo subas a git. La carpeta donde se guardan (`wp-content/ai1wm-backups/`) ya está excluida del repo.
+
+### Sacar un respaldo del sitio real
+
+1. Entra al admin de [honestocreative.com](https://honestocreative.com/wp-admin).
+2. En el menú, ve a **All-in-One WP Migration → Export** (Exportar).
+3. Opcional: abre **Advanced options** (Opciones avanzadas) si quieres un archivo más ligero. Por ejemplo, *Do not export media library* deja fuera las imágenes.
+4. Da clic en **Export to → File** (Exportar a → Archivo).
+5. Espera a que termine y da clic en **Download** para bajar el `.wpress`.
+6. Guárdalo en un lugar privado.
+
+El plugin también deja una copia en el servidor. Cuando ya lo descargaste, bórrala desde **All-in-One WP Migration → Backups** para no ocupar espacio del hosting ni dejar el archivo ahí.
+
+### Importarlo en tu computadora (Local)
+
+1. En Local, crea un sitio nuevo (o usa `honesto.local`) y arráncalo.
+2. Entra a su admin (`honesto.local/wp-admin`) y activa el plugin **All-in-One WP Migration** si no lo está.
+3. Ve a **All-in-One WP Migration → Import** (Importar) y arrastra el archivo `.wpress`.
+4. Confirma con **Proceed** (Continuar). El sitio local se reemplaza completo por el del respaldo.
+5. Al terminar, vuelve a entrar al admin **con tu usuario y contraseña del sitio real**, porque los usuarios también se importan.
+6. Ve a **Settings → Permalinks** (Ajustes → Enlaces permanentes) y da clic en **Save Changes** dos veces, para que funcionen las URLs de las páginas.
+
+**Si el archivo pesa más de 300 MB**, Local no te va a dejar importarlo. Tienes dos opciones:
+
+- Sacar el respaldo sin imágenes (paso 3 de arriba).
+- Subir el límite en `conf/php/php.ini.hbs`: cambia `upload_max_filesize = 300M` por un valor mayor que el tamaño del archivo (por ejemplo `1000M`) y reinicia el sitio en Local.
+
+### Muy importante: regresa el tema a la versión del repo
+
+El respaldo trae el tema **como está en el sitio real**, y al importarlo reemplaza el que tienes en tu computadora. Para volver a la versión de git, en la carpeta del proyecto:
+
+```bash
+git status                                              # muestra qué cambió con la importación
+git restore app/public/wp-content/themes/honesto2026    # regresa el tema a la versión del repo
+git clean -n app/public/wp-content/themes/honesto2026   # lista archivos sobrantes (no borra nada)
+git clean -f app/public/wp-content/themes/honesto2026   # si la lista se ve bien, los borra
+```
+
+La importación también puede cambiar otros archivos del repo (plugins o imágenes). Revisa `git status` y **no hagas commit de cambios que no hiciste tú**. Si tienes dudas, pregunta antes.
 
 ---
 
