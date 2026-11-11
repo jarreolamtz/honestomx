@@ -65,11 +65,17 @@ function areaScripts() {
     // Else
   }
 }
-// Eliminar Textarea de Pages
-function remove_textarea() {
-  // remove_post_type_support( 'post', 'editor' );
-  remove_post_type_support( 'page', 'editor' );
-  wp_enqueue_script('global_js',get_template_directory_uri() . '/js/customPages.js', array('jquery'), '', true);
+// Editor en páginas: se oculta solo en las páginas que tienen su propia plantilla y no
+// muestran ese contenido en el sitio. En las demás (legales y páginas nuevas) sí aparece,
+// porque su texto sale del editor.
+function honesto_paginas_sin_editor() {
+  return array('inicio', 'work', 'about', 'contact', 'shop');
+}
+function honesto_ocultar_editor_en_paginas() {
+  $post = isset($_GET['post']) ? get_post((int) $_GET['post']) : null;
+  if ($post && $post->post_type === 'page' && in_array($post->post_name, honesto_paginas_sin_editor(), true)) {
+    remove_post_type_support('page', 'editor');
+  }
 }
 // Line Break Shortcode
 function line_break_shortcode() {
@@ -92,7 +98,7 @@ add_filter('acf/settings/remove_wp_meta_box', '__return_false');
 add_action('acf/init', 'acf_wysiwyg_add_wpautop');
 add_action ('wp_enqueue_scripts','areaStyle');
 add_action('wp_enqueue_scripts','areaScripts');
-add_action('admin_init', 'remove_textarea');
+add_action('load-post.php', 'honesto_ocultar_editor_en_paginas');
 add_shortcode( 'br', 'line_break_shortcode' );
 add_action( 'init', 'wpb_custom_new_menu' );
 
