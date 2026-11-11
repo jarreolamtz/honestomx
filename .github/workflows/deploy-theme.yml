@@ -5,11 +5,12 @@
 #
 # Secrets requeridos (Settings → Secrets and variables → Actions → Secrets):
 #   SFTP_HOST        Servidor SFTP de IONOS (p. ej. access-xxxxxxx.webspace-host.com)
-#   SFTP_USER        Usuario SFTP
-#   SFTP_PASSWORD    Contraseña SFTP
-#   SFTP_THEME_PATH  Ruta del tema en el servidor; debe terminar en /honesto2026
-#                    (p. ej. /wp-content/themes/honesto2026)
-#   SFTP_KNOWN_HOST Huella(s) del servidor, en formato known_hosts. Se obtiene con:
+#   SFTP_USER        Usuario SFTP exclusivo para el deploy, limitado en IONOS a la
+#                    carpeta wp-content/themes del sitio
+#   SFTP_PASSWORD    Contraseña de ese usuario
+#   SFTP_THEME_PATH  Ruta del tema vista desde ese usuario; debe terminar en /honesto2026
+#                    (con el usuario limitado a themes: /honesto2026)
+#   SFTP_KNOWN_HOST  Huella(s) del servidor, en formato known_hosts. Se obtiene con:
 #                      ssh-keyscan -t ed25519,ecdsa,rsa <SFTP_HOST>
 #                    (con puerto distinto de 22: ssh-keyscan -p <puerto> ...)
 #                    El deploy se niega a conectar si el servidor no presenta esa huella.
@@ -19,6 +20,8 @@
 #   DEPLOY_ENABLED   Ponerla en "true" para que los push a main suban archivos.
 #                    Mientras no exista o no sea "true", los push solo hacen una
 #                    simulación (dry run) que lista lo que cambiaría, sin subir nada.
+#
+# Guía para el equipo: README.md en la raíz del repo.
 #
 # Ejecución manual: Actions → "Deploy tema a IONOS" → Run workflow
 # (por defecto también es simulación; hay que desmarcar "dry_run" para subir).
