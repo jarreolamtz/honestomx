@@ -110,6 +110,8 @@ jobs:
           REMOTE="${SFTP_THEME_PATH%/}/"
           # --reverse: sube local → servidor
           # --delete: borra en el servidor archivos del tema que ya no están en el repo
+          # --overwrite: reemplaza cada archivo directamente; sin esto lftp primero lo borra y
+          #   luego lo sube, y durante el deploy el sitio quedaría unos segundos sin esos archivos
           # Sin --ignore-time a propósito: el checkout deja todos los archivos con fecha nueva,
           # así que se re-sube el tema completo (~100 archivos). Comparar solo por tamaño
           # se saltaría cambios que no alteran el tamaño (p. ej. "reach" → "Reach").
@@ -117,7 +119,7 @@ jobs:
             set sftp:auto-confirm yes;
             set net:max-retries 2;
             set net:timeout 30;
-            mirror --reverse --delete --verbose=1 $DRY_FLAG \
+            mirror --reverse --delete --overwrite --verbose=1 $DRY_FLAG \
               --exclude-glob .DS_Store \
               --exclude-glob .git* \
               '$LOCAL_THEME' '$REMOTE';
