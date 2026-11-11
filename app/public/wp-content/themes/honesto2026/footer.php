@@ -6,7 +6,7 @@
   <?php if(!wp_is_mobile()):?>
     <div class="row w-100">
       <div class="col-md-6">
-        <p style="display: flex; gap: 8px;">© HNST 2025      (  <a href="/privacy-policy" target="_blank">Privacy Policies</a> / <a href="/terms-conditions" target="_blank">Terms & Conditions</a>  )</p>
+        <p style="display: flex; gap: 8px;">© HNST 2026      (  <a href="/privacy-policy" target="_blank">Privacy Policies</a> / <a href="/terms-conditions" target="_blank">Terms & Conditions</a>  )</p>
       </div>
       <div class="col-md-6">
         <div class="row">
@@ -26,7 +26,7 @@
   <?php else: ?>
     <div class="row">
       <div class="col-5">
-        <span>© HNST 2025</span>
+        <span>© HNST 2026</span>
         <br>
         <!-- <a href="/privacy-policy" target="_blank">Privacy Policies</a> -->
       </div>
