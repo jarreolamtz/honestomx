@@ -26,6 +26,17 @@
   });
 })();
 
+// Medición: avisa a Google Analytics / Tag Manager cuando el formulario se envió con éxito
+// (evento "generate_lead", el recomendado por GA4 para contactos). Solo cuenta envíos exitosos,
+// no errores ni spam.
+document.addEventListener('wpcf7mailsent', function (e) {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: 'generate_lead',
+    form_id: e.detail && e.detail.contactFormId
+  });
+});
+
 // Header en blanco mientras la sección rosa (#are_you_an_agency) pasa detrás de él (es fixed)
 (function () {
   var section = document.getElementById('are_you_an_agency');

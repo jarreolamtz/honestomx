@@ -4,6 +4,25 @@
 
 <head>
 
+  <!-- Consentimiento de cookies (Google Consent Mode): todo empieza "denegado" hasta que la
+       persona acepta en el aviso de cookies (js/consent.js). Debe ir antes de GTM/GA. -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('consent', 'default', {
+      ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+      analytics_storage: 'denied', wait_for_update: 500
+    });
+    try {
+      if (localStorage.getItem('honesto_consent') === 'granted') {
+        gtag('consent', 'update', {
+          ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted',
+          analytics_storage: 'granted'
+        });
+      }
+    } catch (e) {}
+  </script>
+
   <!-- Google Tag Manager -->
   <script>
     (function(w, d, s, l, i) {
@@ -39,15 +58,7 @@
 
   <!-- Iso -->
   <meta charset="UTF-8">
-  <!-- Title is the first phrase you see as a search result. -->
-  <title><?php bloginfo('name'); ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
-
-  <!-- Description of your website. Max 160 Characters-->
-  <meta name="description" content="<?php bloginfo('description'); ?>" />
-
-  <!-- Most important word to use on specific page. / No more than 10 keyword phrases -->
-  <meta name="keywords" content="Branding, Communication Design, Photography & Video, Animation, Illustration, Web Design, Editorial, Customer Experience">
 
   <!-- Favicon -->
   <link rel="icon" href="favicon/favicon.ico" sizes="any">
@@ -59,30 +70,8 @@
   <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#FFFFFF">
   <meta name="theme-color" content="#ffffff">
 
-  <!-- Allows robots to crawl your website. https://yoast.com/robots-meta-tags/ -->
-  <meta name="robots" content="selection">
-
-  <!-- Schema.org markup for Google+ and Pinterest  http://schema.org/docs/gs.html-->
-  <meta itemprop="name" content="<?php bloginfo('name'); ?>">
-  <meta itemprop="description" content="<?php bloginfo('description'); ?>">
-  <meta itemprop="image" content="https://honesto.co/image.jpg">
-
-  <!-- Twitter Card data -->
-  <meta name="twitter:card" content="<?php bloginfo('name'); ?>">
-  <meta name="twitter:site" content="@publisher_handle">
-  <meta name="twitter:title" content="<?php bloginfo('name'); ?>">
-  <meta name="twitter:description" content="<?php bloginfo('description'); ?>">
-  <meta name="twitter:creator" content="<?php bloginfo('name'); ?>">
-  <meta name="twitter:image" content="https://honesto.co/image.jpg">
-
-
-  <!-- Open Graph data for sharing in Facebook -->
-  <meta property="og:title" content="<?php bloginfo('name'); ?>" />
-  <meta property="og:type" content="<?php bloginfo('name'); ?>" />
-  <meta property="og:url" content="https://honesto.co/" />
-  <meta property="og:image" content="https://honesto.co/image.jpg" />
-  <meta property="og:description" content="<?php bloginfo('description'); ?>" />
-  <meta property="og:site_name" content="<?php bloginfo('name'); ?>" />
+  <!-- El título, la descripción y las etiquetas para compartir (Open Graph) los genera
+       functions.php dentro de wp_head(), o un plugin de SEO si se instala uno. -->
   <script src="<?php echo get_template_directory_uri(); ?>/js/splide-extension-auto-scroll.min.js"></script>
   <!-- Stylesheets -->
   <?php wp_head(); ?>

@@ -121,4 +121,63 @@ function honesto_cf7_select_placeholder($html) {
 }
 add_filter('wpcf7_form_elements', 'honesto_cf7_select_placeholder');
 
+// HTTPS: si alguien entra por http://, lo manda a la versión https:// (redirección permanente).
+// Solo en el dominio real, para no afectar el sitio local (honesto.local funciona sin https).
+function honesto_forzar_https() {
+  $host = isset($_SERVER['HTTP_HOST']) ? strtolower($_SERVER['HTTP_HOST']) : '';
+  if (is_ssl() || !in_array($host, array('honestocreative.com', 'www.honestocreative.com'), true)) {
+    return;
+  }
+  wp_redirect('https://' . $host . $_SERVER['REQUEST_URI'], 301);
+  exit;
+}
+add_action('template_redirect', 'honesto_forzar_https', 1);
+
+// Título de cada página: lo genera WordPress (o un plugin de SEO) en lugar de estar fijo en header.php.
+function honesto_soporte_tema() {
+  add_theme_support('title-tag');
+}
+add_action('after_setup_theme', 'honesto_soporte_tema');
+
+// En la portada el título es solo el nombre del sitio (sin el lema, que es muy largo para Google)
+function honesto_titulo_portada($partes) {
+  if (is_home() || is_front_page()) {
+    unset($partes['tagline']);
+  }
+  return $partes;
+}
+add_filter('document_title_parts', 'honesto_titulo_portada');
+
+// Descripción y etiquetas para compartir en redes (Open Graph / Twitter).
+// Si se instala un plugin de SEO (Yoast, Rank Math, etc.), él se encarga y esto no se imprime.
+function honesto_hay_plugin_seo() {
+  return defined('WPSEO_VERSION') || defined('RANK_MATH_VERSION') || defined('AIOSEO_VERSION')
+    || defined('SEOPRESS_VERSION') || defined('THE_SEO_FRAMEWORK_VERSION');
+}
+function honesto_meta_basicas() {
+  if (honesto_hay_plugin_seo()) {
+    return;
+  }
+  $titulo = wp_get_document_title();
+  $descripcion = get_bloginfo('description');
+  $url = is_singular() ? wp_get_canonical_url() : ((is_home() || is_front_page()) ? home_url('/') : '');
+  ?>
+  <meta name="description" content="<?php echo esc_attr($descripcion); ?>" />
+  <meta property="og:site_name" content="<?php echo esc_attr(get_bloginfo('name')); ?>" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="<?php echo esc_attr($titulo); ?>" />
+  <meta property="og:description" content="<?php echo esc_attr($descripcion); ?>" />
+  <?php if ($url): ?><meta property="og:url" content="<?php echo esc_url($url); ?>" />
+  <?php endif; ?><meta name="twitter:card" content="summary" />
+  <?php
+}
+add_action('wp_head', 'honesto_meta_basicas', 1);
+
+// Aviso de cookies: se muestra en todas las páginas hasta que la persona acepta o rechaza.
+function honesto_aviso_cookies() {
+  wp_enqueue_style('consent_css', get_template_directory_uri() . '/css/consent.css', array(), honesto_v('/css/consent.css'));
+  wp_enqueue_script('consent_js', get_template_directory_uri() . '/js/consent.js', array(), honesto_v('/js/consent.js'), true);
+}
+add_action('wp_enqueue_scripts', 'honesto_aviso_cookies');
+
 ?>

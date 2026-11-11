@@ -6,7 +6,7 @@
   <?php if(!wp_is_mobile()):?>
     <div class="row w-100">
       <div class="col-md-6">
-        <p style="display: flex; gap: 8px;">© HNST <?php echo wp_date('Y'); ?>      (  <a href="/privacy-policy" target="_blank">Privacy Policies</a> / <a href="/terms-conditions" target="_blank">Terms & Conditions</a>  )</p>
+        <p style="display: flex; gap: 8px;">© HNST <?php echo wp_date('Y'); ?>      (  <a href="/privacy-policy" target="_blank">Privacy Policies</a> / <a href="/terms-conditions" target="_blank">Terms & Conditions</a> / <a href="#" data-cookie-settings>Cookies</a>  )</p>
       </div>
       <div class="col-md-6">
         <div class="row">
