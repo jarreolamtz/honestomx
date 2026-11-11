@@ -17,7 +17,6 @@ function honesto_v($path) {
 // Load CSS
 function areaStyle() {
   wp_enqueue_style('bootstrap',get_template_directory_uri() . '/css/framework/bootstrap.min.css', array(), honesto_v('/css/framework/bootstrap.min.css'));
-  wp_enqueue_style('bootstrap',get_template_directory_uri() . '/css/types/fontawesome-free-5.14.0-web/css/fontawesome.css', array(), honesto_v('/css/types/fontawesome-free-5.14.0-web/css/fontawesome.css'));
   wp_enqueue_style('global_css',get_template_directory_uri() . '/css/global.css', array(), honesto_v('/css/global.css'));
   // HEADER
   wp_enqueue_style('header_css',get_template_directory_uri() . '/css/header.css', array(), honesto_v('/css/header.css'));
